@@ -1,0 +1,84 @@
+@model List<Universidade.Models.CursoModel>
+@{
+    ViewData["Title"] = "Cursos";
+}
+
+
+
+<div class="text-center">
+    <h1 class="display-4"><strong>Cursos Cadastrados</strong></h1>
+
+</div>
+<p><p></p></p><p></p><br/>
+<div class="btn-inicio-main text-center">
+<a asp-controller="Cursos" asp-action="Inserir" class="btn btn-primary">Novo Curso</a>
+</div>
+<p><p></p></p><p></p><br/>
+
+<table class="table" id="tabela">
+  <thead>
+    <tr>
+      <th scope="col">Nome</th>
+    </tr>
+  </thead>
+  <tbody>
+    @foreach(var item in Model)
+    {
+      <tr>
+          <td>@item.nome</td>
+          <td>
+              <div class="btn-group" role="group">  
+                  <a asp-controller="Cursos" asp-action="Atualizar_get" asp-route-id="@item.id" class="btn btn-primary">Editar</a>
+                  <a data-value="@item.id" asp-controller="Cursos" asp-action="Deletar" asp-route-id="@item.id" class="btn btn-danger btn_deletar">Excluir</a>
+              </div> 
+          </td> 
+        </tr>
+    }
+  </tbody>
+</table>
+
+<script>
+  $(document).ready(function () {
+    
+    var url = "@Url.Action("ValidaExclusao", "Cursos")";
+    $(document).on('click', '.btn_deletar', ExecutaProximoPasso);
+    
+    function ExecutaProximoPasso() {
+      event.preventDefault();
+      var id_curso = $(this).attr("data-value");
+
+      $.ajax(url, {
+        method: 'Get',
+        data: {id:id_curso},
+      }).done(function (valido) {
+        if(!valido.valido){
+          alert('Existem disciplinas vinculadas a este curso e não será possível excluir');
+        }else{
+          deletar(id_curso)
+        }
+      }).fail(function () {
+          console.log("Erro")
+      });
+    }   
+  });
+
+  function deletar(id_curso){
+
+    var del = "@Url.Action("Deletar", "Cursos")";
+    $.ajax(del, {
+    method: 'Get',
+    data: {id:id_curso},
+    }).done(function(valido){
+      if(valido.valido){
+        alert('Disciplina deletada com sucesso')
+        location.reload()
+      }else{
+        alert('Não foi possivel deletar a Disciplina')
+      }
+    }).fail(function(){
+      console.log("Erro")
+    });
+    
+  }
+  
+</script>

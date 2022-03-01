@@ -1,0 +1,39 @@
+@model List<Universidade.Models.AprovacaoDisciplinaModel>
+
+<div class="text-center">
+    <h1 class="display-4"><strong>Alunos neste curso</strong></h1>
+</div>
+
+<table class="table" id="tabela">
+    <thead>
+        <tr>
+            <th scope="col">Nome</th>
+            <th scope="col">CPF</th>
+            <th scope="col">Nota</th>
+            <th scope="col">Aprovado</th>
+            <th scope="col">Disciplina</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.nome_aluno</td>
+                <td>@item.cpf</td>
+                <td>@item.nota</td>
+
+                @if (@item.nota >= 60)
+                {
+                <td>Sim</td>
+
+                }
+                else
+                {
+                <td>Nao</td>
+                }
+                
+                <td>@item.nome_disciplina</td>
+            </tr>
+        }
+    </tbody>
+</table>

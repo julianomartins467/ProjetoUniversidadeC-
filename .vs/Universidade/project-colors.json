@@ -1,0 +1,36 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "20a8ee9a-fc88-4fc5-a06c-2d65975110df": {
+      "ProjectGuid": "20a8ee9a-fc88-4fc5-a06c-2d65975110df",
+      "DisplayName": "Universidade",
+      "ColorIndex": 0
+    },
+    "6d7cefa2-16f6-4467-896b-2cc45f232a0a": {
+      "ProjectGuid": "6d7cefa2-16f6-4467-896b-2cc45f232a0a",
+      "DisplayName": "Universidade",
+      "ColorIndex": 1
+    },
+    "fc1d60f5-6c89-4d8f-8f03-46a51c32ee5c": {
+      "ProjectGuid": "fc1d60f5-6c89-4d8f-8f03-46a51c32ee5c",
+      "DisplayName": "Universidade",
+      "ColorIndex": 2
+    },
+    "9808b450-37d4-4692-850e-7d41e7489d6e": {
+      "ProjectGuid": "9808b450-37d4-4692-850e-7d41e7489d6e",
+      "DisplayName": "Universidade",
+      "ColorIndex": 3
+    },
+    "26ffc50c-a834-41c0-92da-cbfdd24b03e9": {
+      "ProjectGuid": "26ffc50c-a834-41c0-92da-cbfdd24b03e9",
+      "DisplayName": "Universidade",
+      "ColorIndex": 4
+    },
+    "c65a9718-456e-4f5c-974c-6a112a563a38": {
+      "ProjectGuid": "c65a9718-456e-4f5c-974c-6a112a563a38",
+      "DisplayName": "Universidade",
+      "ColorIndex": 5
+    }
+  },
+  "NextColorIndex": 6
+}

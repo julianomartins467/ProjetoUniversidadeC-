@@ -1,0 +1,107 @@
+﻿@model List<Universidade.Models.CursoModel>
+<div class="text-center">
+    <br>
+    <h1><strong>Relatório de Alunos</strong></h1>
+    <p></p>
+    <br>
+</div>
+
+<form>
+      <div class="text-center">
+          <div class="row">
+        <label class="form-label control-label"><strong>Cursos:</strong> </label>
+        <div class="col-sm-5">
+        <SELECT id="cursos" class="form-control" required>
+            @foreach(var item in Model)
+            {
+                <OPTION VALUE=@item.nome> @item.nome</OPTION>
+            }
+        </SELECT>
+        </div>
+      
+        <label ><strong>Ano:</strong> </label>
+        <div class="col-sm-5">
+            @{int ano = DateTime.Now.Year;
+            <SELECT id="ano" class="form-control" required>
+              <OPTION VALUE='--Selecione--'>--Selecione--</OPTION>
+              <OPTION VALUE=@ano> @ano</OPTION>
+              <OPTION VALUE=@(ano-1)> @(ano-1)</OPTION>
+              <OPTION VALUE=@(ano-2)> @(ano-2)</OPTION>
+              <OPTION VALUE=@(ano-3)> @(ano-3)</OPTION>
+              <OPTION VALUE=@(ano-4)> @(ano-4)</OPTION>
+              <OPTION VALUE=@(ano-5)> @(ano-5)</OPTION>
+              <OPTION VALUE=@(ano-6)> @(ano-6)</OPTION>
+              <OPTION VALUE=@(ano-7)> @(ano-7)</OPTION>
+              <OPTION VALUE=@(ano-8)> @(ano-8)</OPTION>
+              <OPTION VALUE=@(ano-9)> @(ano-9)</OPTION>
+              <OPTION VALUE=@(ano-10)> @(ano-10)</OPTION>
+            </SELECT>
+            }
+            </div>
+        </div>
+        <p></p>
+      <div class="row">
+        <label ><strong>Semestre:</strong> </label>
+        <div class="col-sm-5">
+            <SELECT id="semestre" class="form-control" required>
+              <OPTION VALUE='--Selecione--'>--Selecione--</OPTION>
+              <OPTION VALUE=1> 1° semestre</OPTION>
+              <OPTION VALUE=2> 2° semestre</OPTION>
+            </SELECT>
+        </div>
+        
+        <label><strong>CPF</strong>: </label>
+        <div class="col-sm-5">
+          <input class="form-control" id="cpf" required maxlength="11" placeholder="Digite seu CPF aqui..."/>
+        </div>
+      </div>
+
+      <div class="row form-inputs">
+        <div class="form-inputs">
+          <button type="button" id="btn_exibir" class="btn btn-primary">Exibir Relatório</button>
+        </div>
+        <div class="form-inputs">
+          <button type="button" id="btn_voltar" class="btn btn-primary">Voltar</button>
+        </div>   
+      </div>
+ </div>
+     
+</form>
+
+
+<div id="div_vazia"></div> 
+
+<script>
+$(document).on('click', '#btn_exibir', exibir);
+
+    function exibir(){
+      
+      var url = "@Url.Action("Pesquisar", "AprovacaoAluno")";
+      var curso = document.getElementById("cursos").value;
+      var ano = parseInt(document.getElementById("ano").value);
+      var semestre = parseInt(document.getElementById("semestre").value);
+      var cpf = document.getElementById("cpf").value;
+
+      if(curso == "--Selecionar--"||isNaN(ano)||isNaN(semestre)){
+        alert("Todos os campos precisam estar preenchidos")
+      }else{
+        $.ajax(url, {
+        method: 'Get',
+        data: {curso:curso,
+                ano:ano,
+                semestre:semestre,
+                cpf:cpf
+                }
+        }).done(function (response) {
+          $("#div_vazia").html(response)
+        }).fail(function () {
+          swal('Atenção', 'Ocorreu um erro!', 'error')
+        });
+      }
+    }
+
+$(document).on('click', '#btn_voltar', voltar);
+    function voltar(){
+        window.location.href = "@Url.Action("Index", "Cursos")"
+    }
+</script>

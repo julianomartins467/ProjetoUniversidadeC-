@@ -1,0 +1,77 @@
+
+@{
+    ViewData["Title"] = "Notas dos Alunos";
+}
+
+<div class="text-center">
+    <h1 class="display-4"><strong>Notas dos Alunos</strong></h1>
+</div><p></p><p></p><p></p><br/>
+<center>
+<div>
+    <form>
+       
+      <div class="form-group">
+        <label><strong>Curso:</strong> </label>
+        <div class="col-sm-4">
+          <input id="nome" class="form-control" maxlength="100" required placeholder="Digite aqui o curso que deseja listar..."/>
+        </div><p></p>
+
+        <label><strong>Ano:</strong> </label>
+        <div class="col-sm-4">
+          @{int ano = DateTime.Now.Year;
+          <SELECT class="form-control form-control" id="ano" required>
+            <OPTION VALUE='--Selecione--'>--Selecione--</OPTION>
+            <OPTION VALUE=@ano> @ano</OPTION>
+            <OPTION VALUE=@(ano-1)> @(ano-1)</OPTION>
+            <OPTION VALUE=@(ano-2)> @(ano-2)</OPTION>
+            <OPTION VALUE=@(ano-3)> @(ano-3)</OPTION>
+            <OPTION VALUE=@(ano-4)> @(ano-4)</OPTION>
+            <OPTION VALUE=@(ano-5)> @(ano-5)</OPTION>
+            <OPTION VALUE=@(ano-6)> @(ano-6)</OPTION>
+            <OPTION VALUE=@(ano-7)> @(ano-7)</OPTION>
+            <OPTION VALUE=@(ano-8)> @(ano-8)</OPTION>
+            <OPTION VALUE=@(ano-9)> @(ano-9)</OPTION>
+            <OPTION VALUE=@(ano-10)> @(ano-10)</OPTION>
+          </SELECT>
+          }
+          <p></p><br/>
+        </div>
+        <div class="row form-inputs">
+        <button type="button" id="_pesquisar" class="btn btn-primary">Pesquisar</button>
+      </div>
+      </div>
+
+      
+    </form>
+    <p></p>
+        
+</div>
+<p></p>
+<div id="div_vazia"></div>
+
+</center>
+<script>
+  
+  $(document).on('click', '#_pesquisar', pesquisar)
+  function pesquisar() {  
+    if($("#nome").val() == ''){
+      alert("O campo não pode estar vazio! Digite Pelo menos 3 Letras")     
+    }else{
+      var url = "@Url.Action("Pesquisar", "Notas")"     
+      var pesquisar = document.getElementById("nome").value
+      var ano = parseInt(document.getElementById("ano").value)
+
+      $.ajax(url, {
+        method: 'Get',
+        contentType: 'application/json',
+        data: {ano:ano,
+               search:pesquisar},
+      }).done(function (response) {
+        $("#div_vazia").html(response)
+      }).fail(function () {
+          swal('Atenção', 'Ocorreu um erro!', 'error')
+      });  
+    }  
+  }
+
+</script>

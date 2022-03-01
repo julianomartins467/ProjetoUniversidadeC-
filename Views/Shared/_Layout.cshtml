@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <style>
+        body {
+            background-color:#EECBAD;
+        }
+    </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] </title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav class=" mb-3">
+            <div class="">
+
+                <ul class="barra-menu">
+                    <li class="barra-item">
+                        <a class="nav-link text-dark" asp-controller="Home" asp-action="Index"><strong>Tela de Cadastros</strong></a>
+                    </li>
+
+                    <li class="barra-item">
+                        <a class="nav-link text-dark" asp-controller="Alunos" asp-action="Index"><strong>Alunos</strong></a>
+                    </li>
+                    <li class="barra-item">
+                        <a class="nav-link text-dark" asp-controller="Cursos" asp-action="Index"><strong>Cursos</strong></a>
+                    </li>
+                    <li class="barra-item">
+                        <a class="nav-link text-dark" asp-controller="Disciplinas" asp-action="Index"><strong>Disciplinas</strong></a>
+                    </li>
+                    <li class="barra-item">
+                        <a class="nav-link text-dark" asp-controller="Notas" asp-action="Index"><strong>Lançar Notas</strong></a>
+                    </li>
+
+                    <li class="barra-item">
+                        <a class="nav-link text-dark" asp-controller="AprovacaoCurso" asp-action="Index"><strong>Relatorio do Curso</strong></a>
+                    </li>
+                    <li class="barra-item">
+                        <a class="nav-link text-dark" asp-controller="AprovacaoAluno" asp-action="Index"><strong>Relatorio do Aluno</strong></a>
+                    </li>
+                    <li class="barra-item">
+                        <a class="nav-link text-dark" asp-controller="AprovacaoDisciplina" asp-action="Index"><strong>Relatorio de Disciplina</strong></a>
+                    </li>
+                </ul>
+
+            </div>
+        </nav>
+    </header>
+    <div class="pagina-principal">
+        <main>
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer>
+        <div>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
