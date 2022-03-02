@@ -5,10 +5,11 @@
     <br>
 </div>
 
-<form>
-      <div class="row">
+<form><center>
+      <div class="form-group">
+          <div class="col-sm-4">    
         <label ><strong>Cursos:</strong> </label>
-        <div class="col-sm-4">
+        
         <SELECT id="cursos" class="form-control" required>
             @foreach(var item in Model)
             {
@@ -16,9 +17,10 @@
             }
         </SELECT>
         </div>
-      
-        <label ><strong>Ano: </strong></label>
+      <p></p>
+        
         <div class="col-sm-3">
+            <label ><strong>Ano: </strong></label><br />
             @{int ano = DateTime.Now.Year;
             <SELECT id="ano" class="form-control" required>
               <OPTION VALUE='--Selecione--'>--Selecione--</OPTION>
@@ -36,9 +38,10 @@
             </SELECT>
             }
         </div>
+      <p></p>
       
-        <label ><strong>Semestre: </strong></label>
         <div class="col-sm-3">
+              <label ><strong>Semestre: </strong></label><br />
             <SELECT id="semestre" class="form-control" required>
               <OPTION VALUE='--Selecione--'>--Selecione--</OPTION>
               <OPTION VALUE=1> 1° semestre</OPTION>
@@ -47,7 +50,7 @@
         </div>
       </div>
 
-      <div class="row form-inputs">
+      <div >
         <div class="form-inputs">
           <button type="button" id="btn_exibir" class="btn btn-primary">Mostrar Relatório</button>
         </div>
@@ -55,10 +58,33 @@
           <button type="button" id="btn_voltar" class="btn btn-primary">Voltar</button>
         </div>      
       </div>
+      </center>
 </form>
 
 
 <div id="div_vazia"></div> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <script>
 $(document).on('click', '#btn_exibir', exibir);

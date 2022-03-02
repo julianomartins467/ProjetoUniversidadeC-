@@ -2,7 +2,7 @@
 for details on configuring this project to bundle and minify static web assets. */
 
 a.navbar-brand {
-  color: black;
+  
   white-space: normal;
   text-align: center;
   word-break: break-all;
@@ -13,21 +13,23 @@ a.navbar-brand {
 a {
     border: 1px solid #EEE9BF;
     border-radius: 5px;
+    color: white;
 }
     a:hover {
-       
-       
         text-decoration: none;
-        font-size: 15px;
+        font-size: 14px;
         transform: scaleY(1.5);
         transition: 0.3s;
-        box-shadow: 5px 5px 5px  black;
-        border-radius:5px;
-        
+        box-shadow: 5px 5px 5px black;
+        border-radius: 5px;
+        background-color: #6CA6CD;
     }
 h1 {
     box-shadow: 5px 5px 5px #CDC9A5;
+    color:white;
+    
 }
+
 
 .azul-barra{
   /*background-color: rgb(137 156 177);*/
@@ -57,11 +59,12 @@ margin: 5px;
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
-  font-size: 14px;
+  font-size: 16px;
 }
 @media (min-width: 768px) {
   html {
-    font-size: 16px;
+    font-size: 19px;
+    
   }
 }
 
@@ -119,7 +122,10 @@ body {
     /* Margin bottom by footer height */
     margin-bottom: 60px;
     margin-top: 0px;
-    background-color: #F0FFFF;
+    /* background-color: #F0FFFF;*/
+    background-image: url(/imagens/fundo.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 .footer {
   color:#6c757d!important;
